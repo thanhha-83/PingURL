@@ -1,0 +1,11 @@
+C:\Users\ha.phan\source\repos\PingURL\PingURL\bin\Debug\PingURL.exe.config
+C:\Users\ha.phan\source\repos\PingURL\PingURL\bin\Debug\PingURL.exe
+C:\Users\ha.phan\source\repos\PingURL\PingURL\bin\Debug\PingURL.pdb
+C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.csproj.AssemblyReference.cache
+C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.csproj.SuggestedBindingRedirects.cache
+C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.Form1.resources
+C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.Properties.Resources.resources
+C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.csproj.GenerateResource.cache
+C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.csproj.CoreCompileInputs.cache
+C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.exe
+C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.pdb
