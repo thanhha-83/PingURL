@@ -9,3 +9,14 @@ C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.csproj.GenerateR
 C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.csproj.CoreCompileInputs.cache
 C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.exe
 C:\Users\ha.phan\source\repos\PingURL\PingURL\obj\Debug\PingURL.pdb
+D:\Projects\Training-CSharp\PingURL\PingURL\bin\Debug\PingURL.exe.config
+D:\Projects\Training-CSharp\PingURL\PingURL\bin\Debug\PingURL.exe
+D:\Projects\Training-CSharp\PingURL\PingURL\bin\Debug\PingURL.pdb
+D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.csproj.AssemblyReference.cache
+D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.csproj.SuggestedBindingRedirects.cache
+D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.Form1.resources
+D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.Properties.Resources.resources
+D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.csproj.GenerateResource.cache
+D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.csproj.CoreCompileInputs.cache
+D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.exe
+D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.pdb

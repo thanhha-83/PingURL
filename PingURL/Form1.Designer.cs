@@ -37,13 +37,15 @@
             this.Col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvResult)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 18);
+            this.label1.Location = new System.Drawing.Point(20, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 21);
             this.label1.TabIndex = 0;
@@ -51,7 +53,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(107, 12);
+            this.btnOpen.Location = new System.Drawing.Point(116, 16);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(99, 33);
             this.btnOpen.TabIndex = 1;
@@ -62,19 +64,19 @@
             // lbFile
             // 
             this.lbFile.AutoSize = true;
-            this.lbFile.Location = new System.Drawing.Point(212, 18);
-            this.lbFile.MaximumSize = new System.Drawing.Size(250, 21);
+            this.lbFile.Location = new System.Drawing.Point(221, 22);
+            this.lbFile.MaximumSize = new System.Drawing.Size(400, 21);
             this.lbFile.Name = "lbFile";
             this.lbFile.Size = new System.Drawing.Size(0, 21);
             this.lbFile.TabIndex = 2;
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(15, 80);
+            this.btnStart.Location = new System.Drawing.Point(24, 84);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(102, 32);
             this.btnStart.TabIndex = 3;
-            this.btnStart.Text = "Start Ping";
+            this.btnStart.Text = "Start Scan";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
@@ -90,9 +92,9 @@
             this.Col2,
             this.Col3});
             this.dtgvResult.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dtgvResult.Location = new System.Drawing.Point(523, 0);
+            this.dtgvResult.Location = new System.Drawing.Point(662, 0);
             this.dtgvResult.Name = "dtgvResult";
-            this.dtgvResult.Size = new System.Drawing.Size(642, 616);
+            this.dtgvResult.Size = new System.Drawing.Size(642, 609);
             this.dtgvResult.TabIndex = 4;
             // 
             // Col1
@@ -112,24 +114,33 @@
             this.Col3.Name = "Col3";
             this.Col3.Width = 200;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnStart);
+            this.panel1.Controls.Add(this.lbFile);
+            this.panel1.Controls.Add(this.btnOpen);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(-2, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(658, 616);
+            this.panel1.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 616);
+            this.ClientSize = new System.Drawing.Size(1304, 609);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtgvResult);
-            this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.lbFile);
-            this.Controls.Add(this.btnOpen);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ping URL";
             ((System.ComponentModel.ISupportInitialize)(this.dtgvResult)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -144,6 +155,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col3;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
