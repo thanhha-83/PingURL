@@ -21,19 +21,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace PingURL
 {
-    public struct URLInfo
-    {
-        public string url { get; set; }
-        public string statusCode { get; set; }
-    }
 
     public partial class Form1 : Form
     {
         private string filePath = string.Empty;
-        private List<string> listURL;
-        private int numOfThreads = 4;
-        private HttpClient client = new HttpClient();
-        private bool allDone = false;
+        private static IEnumerable<string> listURL;
+        private CancellationTokenSource s_cts = new CancellationTokenSource();
 
         public Form1()
         {
@@ -57,7 +50,13 @@ namespace PingURL
                     using (Stream str = openFileDialog1.OpenFile())
                     {
                         string[] results = File.ReadAllLines(filePath);
-                        listURL = new List<string>(results);
+                        listURL = results;
+                    }
+                    dtgvResult.Rows.Clear();
+                    dtgvResult.Refresh();
+                    foreach (string url in listURL)
+                    {
+                        dtgvResult.Rows.Add(url, string.Empty);
                     }
                     MessageBox.Show("Read successful.");
                 }
@@ -76,57 +75,93 @@ namespace PingURL
                 MessageBox.Show("File is empty!!!");
                 return;
             }
-            var stopwatch = Stopwatch.StartNew();
             btnStart.Enabled = false;
+            btnStop.Enabled = true;
+            Task mainTask = Task.Run(() =>
+            {
+                int i = 0;
+                foreach (string url in listURL)
+                {
+                    Task task = PingAddressAsync(url, 5000, s_cts.Token, dtgvResult.Rows[i].Cells[1]);
+                    i++;
+                }
+            });
+        }
+
+        public async Task PingAddressAsync(string address, int timeout, CancellationToken token, DataGridViewCell resultCell = null)
+        {
+            Ping pingClass = new Ping();
+            token.Register(() => pingClass.SendAsyncCancel());
+            while (true)
+            {
+                if (token.IsCancellationRequested) { break; }
+                try
+                {
+                    PingReply pingReply = await pingClass.SendPingAsync(address, timeout);
+                    if (resultCell != null)
+                    {
+                        Action action = () =>
+                        {
+                            resultCell.Value = pingReply.RoundtripTime.ToString();
+                        };
+                        this.BeginInvoke(action);
+                        Console.WriteLine(address + " " + pingReply.RoundtripTime.ToString());
+                    }
+                }
+                catch (Exception e)
+                {
+                    Action action = () =>
+                    {
+                        resultCell.Value = e.Message;
+                    };
+                    this.BeginInvoke(action);
+                    Console.WriteLine(e.Message);
+                }
+                await Task.Delay(1000);
+            }
+        }
+
+        private async void btnStop_Click(object sender, EventArgs e)
+        {
+            await handleCancelPing();
+            btnStop.Enabled = false;
+            btnStart.Enabled = true;
+        }
+
+        private async void btnClear_Click(object sender, EventArgs e)
+        {
+            await handleCancelPing();
             dtgvResult.Rows.Clear();
             dtgvResult.Refresh();
-            for (int i = 0; i < numOfThreads; i++)
+            filePath = string.Empty;
+            lbFile.Text = string.Empty;
+            btnStart.Enabled = true;
+            btnStop.Enabled = false;
+        }
+
+        public async Task handleCancelPing()
+        {
+            if (s_cts != null)
             {
-                Thread t = new Thread(async () =>
-                {
-                    while (listURL.Count() > 0)
-                    {
-                        URLInfo urlInfo = await ScanURL();
-                        Action action = () => {
-                            dtgvResult.Rows.Add(urlInfo.url, urlInfo.statusCode, DateTime.Now.ToString());
-                            dtgvResult.FirstDisplayedScrollingRowIndex = dtgvResult.RowCount - 1;
-                        };
-                        this.BeginInvoke(action);
-
-                    }
-                    if (!allDone)
-                    {
-                        allDone = true;
-                        stopwatch.Stop();
-                        filePath = string.Empty;
-                        Action action = () => {
-                            btnStart.Enabled = true;
-                            lbFile.Text= string.Empty;
-                        };
-                        this.BeginInvoke(action);
-                        MessageBox.Show($"Completed. Spent time: {stopwatch.Elapsed.TotalSeconds}s.");
-                    }
-                });
-                t.Start();
+                s_cts.Cancel();
             }
-                
-        }
+            if (listURL != null && listURL.Count() > 0)
+            {
+                List<Task> tasks = new List<Task>();
+                foreach (string url in listURL)
+                {
+                    var task = Task.Run(async () =>
+                    {
+                        await PingAddressAsync(url, 5000, s_cts.Token);
+                    });
+                    tasks.Add(task);
 
-        private async Task<URLInfo> ScanURL()
-        {
-            string url = listURL.FirstOrDefault();
-            listURL.RemoveAt(0);
-            string statusCode = await GetStatusCode(url);
-            URLInfo urlInfo = new URLInfo();
-            urlInfo.url = url;
-            urlInfo.statusCode = statusCode;
-            return urlInfo;
-        }
-
-        private async Task<string> GetStatusCode(string url)
-        {
-            HttpResponseMessage response = await client.GetAsync(url);
-            return response.StatusCode.ToString();
+                }
+                await Task.WhenAll(tasks.ToArray());
+                s_cts.Dispose();
+                s_cts = new CancellationTokenSource();
+            }
+            Console.WriteLine("Has cancelled all!");
         }
     }
 }
