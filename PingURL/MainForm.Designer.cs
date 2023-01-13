@@ -1,6 +1,6 @@
 ﻿namespace PingURL
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,11 +34,11 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.dtgvResult = new System.Windows.Forms.DataGridView();
-            this.Col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCellHostUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCellPing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnStop = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvResult)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -87,27 +87,26 @@
             // 
             // dtgvResult
             // 
+            this.dtgvResult.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Col1,
-            this.Col2});
-            this.dtgvResult.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dtgvResult.Location = new System.Drawing.Point(509, 0);
+            this.dgvCellHostUrl,
+            this.dgvCellPing});
+            this.dtgvResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtgvResult.Location = new System.Drawing.Point(358, 0);
             this.dtgvResult.Name = "dtgvResult";
-            this.dtgvResult.Size = new System.Drawing.Size(642, 609);
+            this.dtgvResult.Size = new System.Drawing.Size(793, 609);
             this.dtgvResult.TabIndex = 4;
             // 
-            // Col1
+            // dgvCellHostUrl
             // 
-            this.Col1.HeaderText = "Host URL";
-            this.Col1.Name = "Col1";
-            this.Col1.Width = 300;
+            this.dgvCellHostUrl.HeaderText = "Host URL";
+            this.dgvCellHostUrl.Name = "dgvCellHostUrl";
             // 
-            // Col2
+            // dgvCellPing
             // 
-            this.Col2.HeaderText = "Roundtrip Time (ms)";
-            this.Col2.Name = "Col2";
-            this.Col2.Width = 200;
+            this.dgvCellPing.HeaderText = "Roundtrip Time (ms)";
+            this.dgvCellPing.Name = "dgvCellPing";
             // 
             // panel1
             // 
@@ -117,10 +116,21 @@
             this.panel1.Controls.Add(this.lbFile);
             this.panel1.Controls.Add(this.btnOpen);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(-2, 0);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(505, 616);
+            this.panel1.Size = new System.Drawing.Size(358, 609);
             this.panel1.TabIndex = 5;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(240, 84);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(102, 32);
+            this.btnClear.TabIndex = 4;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnStop
             // 
@@ -133,28 +143,19 @@
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(240, 84);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(102, 32);
-            this.btnClear.TabIndex = 4;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1151, 609);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dtgvResult);
+            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ping URL";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvResult)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -171,10 +172,10 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataGridView dtgvResult;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col2;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCellHostUrl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCellPing;
     }
 }
 

@@ -20,3 +20,14 @@ D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.csproj.GenerateRes
 D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.csproj.CoreCompileInputs.cache
 D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.exe
 D:\Projects\Training-CSharp\PingURL\PingURL\obj\Debug\PingURL.pdb
+D:\Temp\PingURL\PingURL\bin\Debug\PingURL.exe.config
+D:\Temp\PingURL\PingURL\bin\Debug\PingURL.exe
+D:\Temp\PingURL\PingURL\bin\Debug\PingURL.pdb
+D:\Temp\PingURL\PingURL\obj\Debug\PingURL.csproj.AssemblyReference.cache
+D:\Temp\PingURL\PingURL\obj\Debug\PingURL.csproj.SuggestedBindingRedirects.cache
+D:\Temp\PingURL\PingURL\obj\Debug\PingURL.Properties.Resources.resources
+D:\Temp\PingURL\PingURL\obj\Debug\PingURL.csproj.GenerateResource.cache
+D:\Temp\PingURL\PingURL\obj\Debug\PingURL.csproj.CoreCompileInputs.cache
+D:\Temp\PingURL\PingURL\obj\Debug\PingURL.exe
+D:\Temp\PingURL\PingURL\obj\Debug\PingURL.pdb
+D:\Temp\PingURL\PingURL\obj\Debug\PingURL.MainForm.resources
